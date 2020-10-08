@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngrx-demo"
+    }
+  },
+  "defaultProject": "ngrx-demo",
+  "cli": {
+    "analytics": "c89fad68-7858-4e50-a6f7-f27007172ea5"
+  }
 }
