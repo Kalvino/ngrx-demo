@@ -1,0 +1,75 @@
+.sidebar-panel{
+	width: 250px;
+	.sidenav-top-wrapper {
+		position:relative;
+		.branding {
+			padding-top: 1em;
+			display: block;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			width: 100%;
+			line-height: 64px;
+			transition-delay: 0s;
+			transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+			-webkit-transition: 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+			img {
+				max-width: 90%;
+				min-width: auto;
+			}
+		}
+	
+		.app-user {
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			width: 100%;
+			padding: 1rem 0 .4rem;
+			.app-user-photo {
+				width: 72px;
+				margin: 0 auto 8px;
+				height: 72px;
+				box-sizing: border-box;
+				border: 1px solid rgba(120, 130, 140, 0.13);
+				padding: 4px;
+				border-radius: 50%;
+				img{
+					width: 100%;
+					height: 100%;
+					border-radius: 50%;
+				}
+			}
+
+			.app-user-name {
+				display: block;
+				font-size: .875rem;
+				font-weight: 300;
+				color: rgba(0,0,0,.96);
+				margin-left: -2px;
+			}
+
+			.app-user-controls {
+				button{
+					.mat-icon {
+						font-size: 16px;
+						line-height: 20px !important;
+						height: 20px;
+						width: 20px;
+					}
+				}
+			}
+		}
+
+		.mb-05 {
+			margin-bottom: .5rem!important;
+		}
+
+		.material-icons.icon-xs {
+			font-size: 13px!important;
+			line-height: 13px;
+			height: 13px;
+			width: 13px;
+		}
+	}
+	
+}

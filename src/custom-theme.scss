@@ -1,0 +1,159 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ngrx-demo-primary: mat-palette($mat-indigo);
+$ngrx-demo-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ngrx-demo-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ngrx-demo-theme: mat-light-theme((
+  color: (
+    primary: $ngrx-demo-primary,
+    accent: $ngrx-demo-accent,
+    warn: $ngrx-demo-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($ngrx-demo-theme);
+
+
+
+
+
+
+/***** custom palettes (http://mcg.mbitson.com)  *****/
+$md-blue: (
+    50 : #e0f5f8,
+    100 : #b3e6ee,
+    200 : #80d6e3,
+    300 : #4dc6d7,
+    400 : #26b9cf,
+    500 : #00adc6,
+    600 : #00a6c0,
+    700 : #009cb9,
+    800 : #0093b1,
+    900 : #0083a4,
+    A100 : #cef4ff,
+    A200 : #9be8ff,
+    A400 : #68dcff,
+    A700 : #4fd6ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-orange: (
+    50 : #fef6ed,
+    100 : #fce8d3,
+    200 : #fbd9b5,
+    300 : #f9c997,
+    400 : #f7be81,
+    500 : #f6b26b,
+    600 : #f5ab63,
+    700 : #f3a258,
+    800 : #f2994e,
+    900 : #ef8a3c,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffe7d5,
+    A700 : #ffd8bc,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-red: (
+    50 : #fbe8e7,
+    100 : #f6c5c4,
+    200 : #f09e9d,
+    300 : #ea7776,
+    400 : #e65958,
+    500 : #e13c3b,
+    600 : #dd3635,
+    700 : #d92e2d,
+    800 : #d52726,
+    900 : #cd1a19,
+    A100 : #ffffff,
+    A200 : #ffcdcd,
+    A400 : #ff9a9a,
+    A700 : #ff8180,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$moio-app-primary: mat-palette($md-blue);
+$moio-app-accent:  mat-palette($md-orange, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$moio-app-warn:    mat-palette($md-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$moio-app-theme: mat-light-theme($moio-app-primary, $moio-app-accent, $moio-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($moio-app-theme);
+
+

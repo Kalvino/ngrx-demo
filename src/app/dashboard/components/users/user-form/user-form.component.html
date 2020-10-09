@@ -1,0 +1,78 @@
+<div>
+  <mat-progress-bar *ngIf="createUserPending$ | async" [mode]="(createUserPending$ | async) ? 'indeterminate' : 'determinate'"
+    class="session-progress"></mat-progress-bar>
+</div>
+  
+<h1 matDialogTitle>{{data.title}}</h1>
+
+<mat-dialog-content>
+  <form [formGroup]="userForm">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+      <div fxFlex="50" class="pr-1">
+        <mat-form-field class="full-width">
+          <input matInput name="firstName" [formControl]="userForm.controls['firstName']" placeholder="{{'FirstName' | translate}}">
+          <mat-error *ngIf="userForm.controls['firstName'].invalid">{{'MandatoryField' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div fxFlex="50" class="pl-1">
+        <mat-form-field class="full-width">
+          <input matInput name="lastName" [formControl]="userForm.controls['lastName']" placeholder="{{'LastName' | translate}}">
+          <mat-error *ngIf="userForm.controls['lastName'].invalid">{{'MandatoryField' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div fxFlex="50" class="pr-1">
+        <mat-form-field class="full-width">
+          <input matInput name="userName" [formControl]="userForm.controls['userName']" placeholder="{{'Username' | translate}}">
+          <mat-error *ngIf="userForm.controls['userName'].invalid">{{'MandatoryField' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div fxFlex="50" class="pl-1">
+        <mat-form-field class="full-width">
+          <input matInput type="email" name="email" [formControl]="userForm.controls['email']" placeholder="{{'Email' | translate}}">
+          <mat-error *ngIf="userForm.controls['email'].invalid">{{'MandatoryField' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" class="pr-1">
+        <mat-form-field class="full-width">
+          <input matInput name="mobilePhone" [formControl]="userForm.controls['mobilePhone']" placeholder="{{'MobilePhoneNumber' | translate}}">
+          <mat-error *ngIf="userForm.controls['mobilePhone'].invalid">{{'MandatoryField' | translate }}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div *ngIf="addPasswordFields" fxFlex="50" class="pr-1">
+        <mat-form-field class="full-width">
+          <input matInput type="password" name="password" [formControl]="userForm.controls['password']" placeholder="{{'Password' | translate}}">
+          <mat-error *ngIf="userForm.controls['password'].invalid">{{'MandatoryField' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div *ngIf="addPasswordFields" fxFlex="50" class="pl-1">
+        <mat-form-field class="full-width">
+          <input matInput type="password" name="confirmPassword" [formControl]="userForm.controls['confirmPassword']"
+            placeholder="{{'ConfirmPassword' | translate}}">
+          <mat-error *ngIf="userForm.controls['confirmPassword'].hasError('required')">
+            {{'MandatoryField' | translate}}
+          </mat-error>
+          <mat-error *ngIf="userForm.controls['confirmPassword'].hasError('NoPasswordMatch')"> 
+            {{ 'NoPasswordMatch' | translate }} 
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div class="mt-1" fxLayout="row wrap" fxLayoutAlign="space-between center" >
+    <button mat-button color="warn" type="button" (click)="cancel()">{{'Cancel' | translate}}</button>
+    <span *ngIf="editMode" fxFlex></span>
+    <button *ngIf="editMode" mat-icon-button color="warn" (click)="deleteUser()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <span fxFlex></span>
+    <button mat-raised-button color="primary" [disabled]="userForm.invalid" type="button" (click)="submit()">{{'Save' |
+      translate}}</button>
+</div>

@@ -1,0 +1,27 @@
+<div class="sidebar-panel" fxLayout="column">
+    <div class="sidenav-top-wrapper">
+      <div class="branding">
+        <img src="assets/images/logo.png" alt="logo" class="app-logo">
+      </div>
+    
+      <div class="app-user">
+        <div class="app-user-photo">
+          <img src="assets/images/calvin.jpeg" alt="">
+        </div>
+        <span class="app-user-name mb-05">
+          Calvin Odira
+          <!-- {{currentUser?.firstName}} {{currentUser?.lastName}} -->
+        </span>
+        <!-- Small buttons -->
+        <div class="app-user-controls">
+          <button class="text-muted" name="logout-button" mat-icon-button mat-xs-button matTooltip="{{ 'Profile' | translate }}">
+              <mat-icon>account_box</mat-icon>
+            </button>
+    
+        </div>
+      </div>
+    </div>
+    <mat-divider [ngStyle]="{margin: '0 -24px'}"></mat-divider>
+    
+    <app-sidenav-menu></app-sidenav-menu>
+  </div>
