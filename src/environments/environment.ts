@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  whitelistedDomains: [
+    'dev-api.my-appsolute-mobility.com',
+    'localhost:4200',
+    'localhost:3000',
+    'fair-api.my-appsolute-mobility.com'
+  ],
+  // apiHost: 'https://fair-api.my-appsolute-mobility.com',
+  apiHost: 'http://localhost:3000',
+  socketHost: 'https://dev-broker.my-appsolute-mobility.com:8012'
 };
 
 /*
