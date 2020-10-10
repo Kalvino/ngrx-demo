@@ -22,7 +22,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { reducers, metaReducers, CustomSerializer } from './reducers';
 
 import { select, Store, StoreModule } from '@ngrx/store';
-import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -42,25 +41,6 @@ registerLocaleData(de);
  */
 export function createTanslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-/**
- * jwt options factory to obtain token from the
- * store
- * @param store Store
- */
-export function jwtOptionsFactory(store) {
-  // return {
-  //   whitelistedDomains: environment.whitelistedDomains,
-  //   headerName: "x-auth-token",
-  //   tokenGetter: () => {
-  //     return store.pipe(
-  //       select(fromAuth.getAccessToken),
-  //       map(token => token),
-  //       take(1)
-  //     ).toPromise();
-  //   }
-  // };
 }
 
 @NgModule({
@@ -84,14 +64,6 @@ export function jwtOptionsFactory(store) {
         provide: TranslateLoader,
         useFactory: (createTanslateLoader),
         deps: [HttpClient]
-      }
-    }),
-
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [Store]
       }
     }),
 

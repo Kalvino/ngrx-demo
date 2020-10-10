@@ -76,41 +76,19 @@ export class UserFormComponent implements OnInit {
     
   }
 
-  passwordMatchValidator(control: AbstractControl) {
-    const password: string = control.get('password').value; // get password from our password form control
-    const passwordConfirmation: string = control.get('confirmPassword').value; // get password from our confirmPassword form control
-    // compare is the password math
-    if (password !== passwordConfirmation) {
-      // if they don't match, set an error in our passwordConfirmation form control
-      control.get('confirmPassword').setErrors({ NoPasswordMatch: true });
-    }else{
-     if ( control.getError('NoPasswordMatch')){
-       control.setErrors(null);
-     }
-      return null
-    }
-  }
-
-  filterRoles(userType){
-    this.roles
-  }
-
   buildUserForm(user){
 
-    if (user.firstName){
-      // remove password fields from the dom if editing
-      this.addPasswordFields = false;
-
+    if (user.name){
       /**
        * Create userForm group to edit user details
        */
       this.userForm = this.fb.group({
-        _id: [user._id || ''],
-        firstName: [user.firstName || '' ,Validators.required],
-        lastName: [user.lastName || '' ,Validators.required],
-        userName: [user.userName || '' ,Validators.required],
+        id: [user.id || ''],
+        name: [user.name || '' ,Validators.required],
+        username: [user.username || '' ,Validators.required],
         email: [user.email || '' ,[Validators.email, Validators.required]],
-        mobilePhone: [user.mobilePhone || '', Validators.required ],
+        phone: [user.phone || '', Validators.required ],
+        website: [user.website || '', [Validators.required]],
       })
 
       this.editMode = true;
@@ -119,14 +97,13 @@ export class UserFormComponent implements OnInit {
       /**
        * Create a new userForm group to collect user details
        */
+
       this.userForm = this.fb.group({
-        firstName: ['' ,Validators.required],
-        lastName: ['' ,Validators.required],
-        userName: ['' ,Validators.required],
+        name: ['', Validators.required],
+        username: ['', Validators.required],
         email: ['' ,[Validators.email]],
-        mobilePhone: ['' ],
-        password: ['' ,[Validators.required]],
-        confirmPassword: ['' ,Validators.required],
+        phone: ['', [Validators.required] ],
+        website: ['', [Validators.required]],
       });
 
       this.editMode = false;
@@ -144,7 +121,7 @@ export class UserFormComponent implements OnInit {
       let user = this.userForm.value;
       console.log(user); 
 
-      if (user._id){
+      if (user.id){
         this.store.dispatch( new UsersActions.EditUser(user))        
       }else{
         this.store.dispatch(new UsersActions.CreateUser({user}));
@@ -192,8 +169,8 @@ export class UserFormComponent implements OnInit {
 
   // delete User
   deleteUser(){
-    const userId = this.data.payload._id
-    const userName = this.data.payload.userName
+    const userId = this.data.payload.id
+    const userName = this.data.payload.username
     console.log(userId)
     const title = this.translate.instant("DeleteUserTitle");
     const message = this.translate.instant("DeleteUserMessage", {userName: userName} );

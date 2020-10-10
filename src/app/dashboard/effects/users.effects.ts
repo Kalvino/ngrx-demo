@@ -35,7 +35,7 @@ export class UsersEffects {
             // delay(2000),
             map(user => {
               console.log(user);
-              const userName = user.userName;
+              const userName = user.username;
 
               this.snackBar.open(this.translate.instant('UserCreatedSuccessfully', {userName: userName} ),
               this.translate.instant('Ok'),
@@ -74,7 +74,7 @@ export class UsersEffects {
         .pipe(
           map((user: IUser) => {
 
-            const userName = user.userName;
+            const userName = user.username;
             console.log( user )
 
             this.snackBar.open(this.translate.instant('UserUpdatedSuccessfully', {userName: userName}),
@@ -168,12 +168,12 @@ export class UsersEffects {
           .pipe(
             delay(3000),
             map((users: IUser[]) => {
-              //console.log(users);
+              console.log(users);
               return new UsersApiActions.LoadUsersSuccess({ users });
             }),
             catchError(httpError => {
               const message = httpError.statusText.toLowerCase();
-              console.log(httpError)
+              console.log(httpError)  
               const snackBarRef = this.snackBar.open(this.translate.instant(message), this.translate.instant('Retry'), {
                 duration: 10000
               });

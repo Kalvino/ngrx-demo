@@ -23,15 +23,6 @@
 			
 	<div class="p-0" [@animate]="{value:'*',params:{y:'50px',delay:'300ms'}}">
 		<mat-card-content class="p-0">
-			<!-- <mat-list *ngIf="isMobile; else desktopView" dense>
-				<mat-list-item *ngFor="let user of users$ | async" (click)="openPopUp(user)">
-					<img matListAvatar src="../../../../assets/images/default-user.png" >
-					<h3 matLine> {{user.firstName}} {{user.lastName}}</h3>
-					<p matLine>
-					<span> {{user.userName}} </span>
-					</p>
-				</mat-list-item>
-			</mat-list> -->
 
 			<!-- <ng-template #desktopView> -->
 				<ngx-datatable 
@@ -46,42 +37,32 @@
 					[messages]="staticMessages"
 					(select)="onSelectRow($event)"
 					(dblclick)= "openPopUpDblClick($event)">
-					<ngx-datatable-column *ngIf="!isMobile" name="{{'UserName' | translate}}" [flexGrow]="1">
+					<ngx-datatable-column name="{{'UserName' | translate}}" [flexGrow]="1">
 						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.userName }}
+							{{ row?.username }}
 						</ng-template>
 					</ngx-datatable-column>
-					<ngx-datatable-column name="{{'FirstName' | translate}}" [flexGrow]="1">
+					<ngx-datatable-column name="{{'Name' | translate}}" [flexGrow]="1">
 						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.firstName }}
+							{{ row?.name }}
 						</ng-template>
 					</ngx-datatable-column>
-					<ngx-datatable-column name="{{'LastName' | translate}}" [flexGrow]="1">
-						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.lastName }}
-						</ng-template>
-					</ngx-datatable-column>
-					<ngx-datatable-column *ngIf="!isMobile" name="{{'Email' | translate}}" [flexGrow]="1">
+					
+					<ngx-datatable-column name="{{'Email' | translate}}" [flexGrow]="1">
 						<ng-template let-row="row" ngx-datatable-cell-template>
 							{{ row?.email }}
 						</ng-template>
 					</ngx-datatable-column>
 		
-					<ngx-datatable-column *ngIf="!isMobile" name="{{'MobileNumber' | translate}}" [flexGrow]="1">
+					<ngx-datatable-column name="{{'MobileNumber' | translate}}" [flexGrow]="1">
 						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.mobilePhone }}
+							{{ row?.phone }}
 						</ng-template>
 					</ngx-datatable-column>
-		
-					<ngx-datatable-column *ngIf="!isMobile" name="{{'ServicePartner' | translate}}" [flexGrow]="1">
+
+					<ngx-datatable-column name="{{'Website' | translate}}" [flexGrow]="1">
 						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.servicePartner }}
-						</ng-template>
-					</ngx-datatable-column>
-		
-					<ngx-datatable-column *ngIf="!isMobile"  name="{{'Role' | translate}}" [flexGrow]="1">
-						<ng-template let-row="row" ngx-datatable-cell-template>
-							{{ row?.role }}
+							{{ row?.website }}
 						</ng-template>
 					</ngx-datatable-column>
 		

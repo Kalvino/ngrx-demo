@@ -1,15 +1,29 @@
 /**
  * user defintion
+ *
+ * https://jsonplaceholder.typicode.com/users
  */
 
-
 export interface IUser {
-  _id?: string;
-  userName?: string;
-  firstName?: string;
-  lastName?: string;
-  password?: string;
-  confirm_password?: string;
+  id?: string;
+  name?: string;
+  username?: string;
   email?: string;
-  mobilePhone?: string;
+  address?: {
+    street?: string;
+    suite?: string;
+    city?: string;
+    zipcode?: string;
+    geo?: {
+      lat?: string;
+      lng?: string;
+    }
+  };
+  phone?: string;
+  website?: string;
+  company?: {
+    name?: string;
+    catchPhrase?: string;
+    bs?: string;
+  };
 }

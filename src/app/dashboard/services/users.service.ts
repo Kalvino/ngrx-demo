@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-
+import { catchError } from 'rxjs/operators';
 import { IUser } from '../models/user.model';
 import { environment } from '../../../environments/environment';
 import { Update } from '@ngrx/entity';
@@ -17,14 +17,16 @@ import { Update } from '@ngrx/entity';
 })
 export class UsersService {
 
+  usersUrl = environment.apiHost
   constructor(private http: HttpClient) {
   }
+
 
   /**
    * get all users from the app-cloud api
    */
   getUsers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${environment.apiHost}/api/leveloneusers`);
+    return this.http.get<IUser[]>(this.usersUrl);
   }
 
   /**
@@ -32,7 +34,7 @@ export class UsersService {
    * @param user User
    */
   createUser(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(`${environment.apiHost}/api/leveloneusers`, user);
+    return this.http.post<IUser>(this.usersUrl, user);
   }
 
   /**
@@ -40,7 +42,7 @@ export class UsersService {
    * @param id user id
    */
   deleteUser(id: string): Observable<{}> {
-    return this.http.delete<IUser>(`${environment.apiHost}/api/leveloneusers/${id}`);
+    return this.http.delete<IUser>(`${this.usersUrl}/${id}`);
   }
 
   /**
@@ -48,7 +50,7 @@ export class UsersService {
    * @param user object:User
    */
   updateUser(user: IUser): Observable<IUser> {
-    return this.http.put<IUser>(`${environment.apiHost}/api/leveloneusers/${user._id}`, user);
+    return this.http.put<IUser>(`${this.usersUrl}/${user.id}`, user);
   }
 
   /**
@@ -57,7 +59,7 @@ export class UsersService {
    */
   editUser(changed: Update<IUser>): Observable<IUser> {
     return this.http
-      .put<IUser>(`${environment.apiHost}/api/users/${changed.id}`, { ...changed.changes });
+      .put<IUser>(`${this.usersUrl}/${changed.id}`, { ...changed.changes });
   }
 
 

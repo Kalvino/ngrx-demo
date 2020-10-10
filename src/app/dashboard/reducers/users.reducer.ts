@@ -9,7 +9,7 @@ export interface State extends EntityState<IUser> {
 
 // extend & export entity adapter
 export const adapter: EntityAdapter<IUser> = createEntityAdapter<IUser>({
-  selectId: (user: IUser) => user._id,
+  selectId: (user: IUser) => user.id,
   sortComparer: false
 });
 
@@ -50,7 +50,7 @@ export function reducer(
     case UsersActions.UsersActionTypes.SelectUser:
       return {
         ...state,
-        selectedUserId: action.payload._id
+        selectedUserId: action.payload.id
       };
 
     // clear selected user

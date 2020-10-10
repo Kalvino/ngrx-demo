@@ -11,7 +11,7 @@ export const environment = {
     'fair-api.my-appsolute-mobility.com'
   ],
   // apiHost: 'https://fair-api.my-appsolute-mobility.com',
-  apiHost: 'http://localhost:3000',
+  apiHost: 'https://jsonplaceholder.typicode.com/users',
   socketHost: 'https://dev-broker.my-appsolute-mobility.com:8012'
 };
 

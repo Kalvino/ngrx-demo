@@ -82,9 +82,9 @@ export class UsersComponent implements OnInit {
       this.filteredUsers$ = combineLatest([this.users$, this.filter$]).pipe(
         map(([users, filterString]) => 
           users.filter(user => 
-            [user.firstName,user.lastName,
-              user.userName,user.email,
-              user.mobilePhone]
+            [user.name,user.username,
+              user.email,user.phone,
+              user.website]
             .join().toLowerCase().indexOf(filterString.toLowerCase()) !== -1 || !filterString)
         )
       );
