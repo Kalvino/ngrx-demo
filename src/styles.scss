@@ -3,11 +3,11 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import '~@swimlane/ngx-datatable/index.css';
-@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/themes/material';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 
 /* Custom Theme */
-@import "_custom-theme";
+@import "custom-theme";
 
 /* You can add global styles to this file, and also import other style files */
 
